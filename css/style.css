@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+div#container{
+    display: flex;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: darkcyan;
+    justify-content: center;
+    align-items:flex-start;
+    flex-wrap: wrap;
+
+}
+
+div#grid{
+    display: flex;
+    width: 600px;
+    height: 600px;
+    background-color: red;
+    flex-wrap: wrap;
+}
+.row{
+    width: 100%;
+}
+.grid-element{
+    width: 25%;
+    height: 25%;
+    box-sizing: border-box;
+    background-color: bisque;
+    border: 1px solid;
+    border-color: black;
+}
