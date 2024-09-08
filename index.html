@@ -5,30 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch a sketch!</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <script type="JavaScript" src="/script/script.js"></script>
+
 </head>
 <body>
     <div id="container">
         <div class="row"><h1>Etch a sketch</h1></div>
-        <div id="grid">
-            <div class="grid-element">1</div>
-            <div class="grid-element">2</div>
-            <div class="grid-element">3</div>
-            <div class="grid-element">4</div>
-            <div class="grid-element">5</div>
-            <div class="grid-element">6</div>
-            <div class="grid-element">7</div>
-            <div class="grid-element">8</div>
-            <div class="grid-element">9</div>
-            <div class="grid-element">10</div>
-            <div class="grid-element">11</div>
-            <div class="grid-element">12</div>
-            <div class="grid-element">13</div>
-            <div class="grid-element">14</div>
-            <div class="grid-element">15</div>
-            <div class="grid-element">16</div>
-                        
+
+        <div class="row">
+            <div id="grid">
+                <div class="grid-element">1</div>
+                <div class="grid-element">2</div>
+                <div class="grid-element">3</div>
+                <div class="grid-element">4</div>
+                <div class="grid-element">5</div>
+                <div class="grid-element">6</div>
+                <div class="grid-element">7</div>
+                <div class="grid-element">8</div>
+                <div class="grid-element">9</div>
+                <div class="grid-element">10</div>
+                <div class="grid-element">11</div>
+                <div class="grid-element">12</div>
+                <div class="grid-element">13</div>
+                <div class="grid-element">14</div>
+                <div class="grid-element">15</div>
+                <div class="grid-element">16</div>                
+            </div>
+        </div>
+
+        <div class="row">
+            <h2>Control panel</h2>
+            <input type="range" min="2" max="100" id="gridSize" value="2"/>
+            <p>value: <span id="value"></span></p>
+
+
         </div>
     </div>
+    <script src="script/script.js"></script>
 </body>
 </html>
