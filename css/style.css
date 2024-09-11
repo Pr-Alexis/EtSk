@@ -13,14 +13,16 @@ div#container{
 
 }
 
-div#grid{
+#grid{
     display: flex;
-    width: 600px;
-    height: 600px;
-    background-color: red;
+    width: 800px;
+    height: 800px;
+    gap: 0px;
     flex-wrap: wrap;
     border: 1px solid;
     border-color: black;
+    align-content: flex-start;
+    align-items: flex-start;
 }
 .row{
     display: flex;
@@ -29,12 +31,10 @@ div#grid{
     justify-content: center;
 }
 .grid-element{
-    width: 25%;
-    height: 25%;
     box-sizing: border-box;
-    background-color: bisque;
     border: 1px solid;
     border-color: black;
+    background-color: darkmagenta;
 }
 
 h1{
