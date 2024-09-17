@@ -1,8 +1,10 @@
 /*VARIABLES*/
 
-const value = document.querySelector("#value");
-const input = document.querySelector("#gridSize");
+const gridSize = document.querySelector("#gridSize");
 const grid = document.querySelector('#grid');
+const buttons = document.querySelectorAll(".color-button");
+const resetButton= document.querySelector(".reset-button")
+let penColor= "#000000";
 let penToggler= false;
 
 /*Grid initialization*/
@@ -16,7 +18,6 @@ function gridSizeUpdater(){
         height= (100/gridSizeValue)+"%";
     //Clearing grid and css rules
     grid.innerHTML="";
-    value.textContent=width;
 
     //Creating grid elements and adding them to the grid
     for(let i=0; i<gridSizeValue**2;i++){
@@ -49,11 +50,25 @@ function activatePen(){
 
 /*COLOR CHANGING FUNCTION*/
 function penActivation(event){
-    event.target.style.backgroundColor='red';
+    event.target.style.backgroundColor=penColor;
 }
 
+function colorChange(color){
+    penColor=color;
+}
 
+/*RESET FUNCTION*/
+function resetFunction(){
+    gridSize.value=16;
+    gridSizeUpdater();
+}
 
 /*EVENT LISTENERS*/
-input.addEventListener("input", gridSizeUpdater);
+gridSize.addEventListener("input", gridSizeUpdater);
 grid.addEventListener("click",activatePen);
+buttons.forEach(button=>{
+    button.addEventListener("click",()=>{
+        colorChange(button.value);
+    });
+});
+resetButton.addEventListener("click", resetFunction);
