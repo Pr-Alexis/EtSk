@@ -5,9 +5,11 @@ const grid = document.querySelector('#grid');
 const buttons = document.querySelectorAll(".color-button");
 const magicPenButton = document.querySelector(".magic-button");
 const resetButton= document.querySelector(".reset-button");
+const greyButton= document.querySelector(".shader-button");
 let penColor= "#000000";
 let penToggler= false;
 let magicPen=false;
+let greyPen=false;
 
 
 /*Function to generate a rng for computer */
@@ -18,6 +20,10 @@ function rnGen(min,max){
 function generateNumber(){
     let number= rnGen(0,9);
     return number;   
+}
+function rgbToHex(rgb) {
+    let result = rgb.match(/\d+/g);
+    return ((1 << 24) + (parseInt(result[0]) << 16) + (parseInt(result[1]) << 8) + parseInt(result[2])).toString(16).slice(1).toUpperCase();
 }
 
 /*Grid initialization*/
@@ -39,6 +45,7 @@ function gridSizeUpdater(){
         gridElement.id=i;
         gridElement.style.width= width;
         gridElement.style.height= height;
+        gridElement.style.backgroundColor="#ffffff";
         grid.appendChild(gridElement);
     }
 }
@@ -63,14 +70,20 @@ function activatePen(){
 
 /*COLOR CHANGING FUNCTION*/
 function gridColoring(event){
+    let e=event;
     if(magicPen==true){
         penColor=randomColorGenerator()
     }
+    if(greyPen==true){
+        penColor=shadeCreator(e);
+    }
+
     event.target.style.backgroundColor=penColor;
 }
 
 function colorChange(color){
     magicPen=false;
+    greyPen= false;
     penColor=color;
 }
 
@@ -114,6 +127,22 @@ function randomColorGenerator(){
     return randomColor;
 }
 
+function shadeCreator(e){
+    let hexColor=rgbToHex(e.target.style.backgroundColor); 
+
+    console.log(`current Color: ${hexColor}`);
+    let currentColor=parseInt(hexColor,16);
+
+    console.log(`current Color: ${currentColor}`);
+    let shade=0x000000;
+    if(currentColor>0x0){
+        shade=currentColor-0x111111;
+    }
+    
+    console.log(`Shade Color: ${shade}`);
+    return `#${shade.toString(16).padStart(6, '0')}`;
+}
+
 /*RESET FUNCTION*/
 function resetFunction(){
     gridSize.value=16;
@@ -123,13 +152,17 @@ function resetFunction(){
 /*EVENT LISTENERS*/
 gridSize.addEventListener("input", gridSizeUpdater);
 grid.addEventListener("click",activatePen);
-resetButton.addEventListener("click", resetFunction);
 buttons.forEach(button=>{
     button.addEventListener("click",()=>{
         colorChange(button.value);
     });
 });
-
 magicPenButton.addEventListener("click",()=>{
+    greyPen=false;
     magicPen=true;
     });
+greyButton.addEventListener("click",()=>{
+    magicPen=false;
+    greyPen=true;
+});
+resetButton.addEventListener("click", resetFunction);
