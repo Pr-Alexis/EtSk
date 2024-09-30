@@ -1,22 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
 }
 
-div#container{
+body{
+    font-family: "Montserrat", sans-serif;
+    background-color: rgba(25,25,25,1);
+}
+
+.container{
+    width: 50%;
     display: flex;
-    height: 100vh;
+    flex-direction: column;
     margin: 0 auto;
-    justify-content: center;
+    justify-content: flex-start;
     align-items:flex-start;
-    flex-wrap: wrap;
+    margin-top: 3em;
+    gap:2em;
 
 }
 
-#grid{
+.row{
     display: flex;
-    width: 800px;
-    height: 800px;
+    flex-direction: row;
+    width: 100%;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 1em 1em;
+   
+}
+
+.row-boxed{
+    border: 1px solid;
+    border-color: rgba(200,200,200,1);
+    border-radius: 10px;
+    background-color: rgba(200,200,200,1);
+    box-shadow: 20px 20px 100px 20px rgba(200,200,200,1);
+}
+
+.row-center{
+    align-items: center;
+    justify-content: center;
+}
+.wrap{
+    flex-wrap:wrap;
+}
+.no-wrap{
+    flex-wrap: nowrap;
+}
+.col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+
+.col-30{
+    flex-basis:29%;
+}
+
+.col-50{
+    flex-basis:50%;
+}
+
+.col-70{
+    flex-basis:69%;
+}
+
+.col-100{
+    flex-basis: 100%;
+    width: 100%;
+}
+
+
+/*So the grid is display is cheated out:
+ *1. The grid container has top and left borders
+ *2. The grid elements have bottom and right borders
+ *This dirty moves avoid a small gap on the right side of the grid between the container and the elements
+ *and avoids the 2px borders which were ugly to watch.
+ */
+.grid{
+    display: flex;
+    width: 100%;
+    aspect-ratio: 1/1;
+    z-index: 99;
     gap: 0px;
     flex-wrap: wrap;
     border-style: solid;
@@ -25,12 +96,7 @@ div#container{
     align-content: flex-start;
     align-items: flex-start;
 }
-.row{
-    display: flex;
-    width: 100%;
-    align-items: flex-start;
-    justify-content: center;
-}
+
 .grid-element{
     box-sizing: border-box;
     border-bottom: 1px solid;
@@ -38,6 +104,97 @@ div#container{
     border-color: black;
 }
 
-h1{
+.title{
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    font-weight: 300;
+}
+
+.text-info{
+    width: 100%;
     text-align: center;
 }
+
+.subtitle{
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 300;
+    padding: 10px 0 10px 0;
+}
+.button{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid;
+}
+
+.red{
+    background-color: #cc0000;
+    border-color: #aa0000;
+}
+
+.black{
+    background-color: #333333;
+    border-color: #000000;
+}
+
+.white{
+    background-color: #f0f0f0;
+    border-color: #ffffff;
+}
+
+.magic{
+    background:radial-gradient(circle, rgba(34,193,195,0.87) 28%, rgba(96,14,14,0.44) 60%);
+    border-color:rgba(96,14,14,0.44);
+}
+
+.shader{
+    border-color: rgb(50,50,50);
+    background: linear-gradient(297deg, rgba(50,50,50,0.94) 23%, rgba(255,255,255,0.81) 75%); 
+
+}
+.red:hover{
+    background-color: #aa0000;
+    border-color: #cc0000;
+}
+
+.black:hover{
+    background-color: #000000;
+    border-color: #333333;
+}
+
+.white:hover{
+    background-color: #ffffff;
+    border-color: #f0f0f0;
+}
+.magic:hover{
+    background:radial-gradient(circle, rgba(96,14,14,0.44) 28%,rgba(34,193,195,0.87)  60%);
+    border-color:rgba(34,193,195,0.87);
+}
+
+.shader:hover{
+    border-color: rgb(50,50,50);
+    background: linear-gradient(297deg, rgba(255,255,255,0.81) 23%, rgba(50,50,50,0.94)  75%); 
+
+}
+
+/* Media queries for small screens or small viewports*/
+@media only screen and (max-width: 950px) {
+    .container{
+        width: 90%;
+    }
+    .row{
+        flex-wrap: wrap;
+    }
+    .col-50{
+        flex-basis: 100%;
+    }
+    .col-30{
+        flex-basis: 100%;
+    }
+    .col-70{
+        flex-basis: 100%;
+    }
+  }

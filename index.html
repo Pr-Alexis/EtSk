@@ -4,32 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch a sketch!</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 <body>
-    <div id="container">
-        <div class="row"><h1>Etch a sketch</h1></div>
-
-        <div class="row">
-            <div id="grid">                
-            </div>
+    <!--Assignment requires a flex grid so the whole page is flex but-->
+    <div class="container">
+        <div class="row row-boxed wrap">
+            <h1 class="title">Etch a sketch</h1>
+            <p class="text-info">Left click on the grid to start drawing</p>
         </div>
 
         <div class="row">
-            <h2>Control panel</h2>
+            <div class="col col-70">
+                <div class="grid"></div> 
+            </div>        
+            <div class="col col-30 row-boxed">
+
+         
+                    <div class="col col-100">
+                        <h2 class="subtitle">Control panel</h2>
+                        <p class="text-info"> Grid control</p>
+                        <input type="range" min="2" max="50" id="gridSize" value="16"/>
+                        <button class="reset-button">Reset</button> 
+                    </div>
+                    <div class="col col-100">
+                        <p class="text-info"> Pen color</p>
+                        <div class="row no-wrap">
+                            <div class="button-container">
+                                <button class="button color-button red" value="#aa0000"></button>
+                            </div>
+                            <div class="button-container">
+                                <button class="button color-button black" value="#000000"></button>
+                            </div>
+                            <div class="button-container">
+                                <button class="button color-button white" value="#ffffff"></button>
+                            </div>
+                            <div class="button-container">   
+                                <button class="button magic-button magic"></button>
+                            </div>
+                            <div class="button-container">
+                                <button class="button shader-button shader"></button>
+                            </div>
+                        </div>  
+                    </div>
+                  
+                </div>
+               
+            
         </div>
-        <div class="row">
-            <input type="range" min="2" max="50" id="gridSize" value="16"/>
-        </div>
-        <div class="row">
-            <button class="color-button" value="#ff0000">Red pen</button>
-            <button class="color-button" value="#000000">Black pen</button>
-            <button class="color-button" value="#ffffff">Eraser pen</button>   
-            <button class="magic-button">Magic pen</button>
-            <button class="shader-button">Gray shade</button>
-            <button class="reset-button">Reset grid</button>         
-        </div>
+
+
     </div>
     <script src="script/script.js"></script>
 </body>
